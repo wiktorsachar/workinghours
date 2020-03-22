@@ -214,7 +214,7 @@ function printOutput(text) {
 }
 
 function makeResetVisible(action) {
-  document.getElementById('reset').style.display = action ? "inline" : "none";
+  document.getElementById("reset").style.display = action ? "inline" : "none";
 }
 
 function getOutputAnimationArray(number) {
@@ -227,8 +227,9 @@ function getOutputAnimationArray(number) {
 
 function printOutputAnimation(number) {
   const animationArray = getOutputAnimationArray(number);
-  const interval = Math.round(500 / animationArray.length);
-  let i = 0;
+  const animationTime = 300;
+  const interval = Math.round(animationTime / animationArray.length);
+  let i = number > animationTime ? number - animationTime : 0;
   const animation = window.setInterval(() => {
     printOutput(animationArray[i]);
     if (animationArray[i] === number) {
@@ -255,8 +256,8 @@ function handleCountButton() {
 }
 
 function handleResetButton() {
-  document.getElementById('first-date').value = "";
-  document.getElementById('second-date').value = "";
-  document.getElementById('output').innerHTML = "";
+  document.getElementById("first-date").value = "";
+  document.getElementById("second-date").value = "";
+  document.getElementById("output").innerHTML = "";
   makeResetVisible(false);
 }
