@@ -217,6 +217,10 @@ function makeResetVisible(action) {
   document.getElementById("reset").style.display = action ? "inline" : "none";
 }
 
+function makeOutputVisible(action) {
+  document.getElementById("output").style.visibility = action ? "visible" : "hidden";
+}
+
 function getOutputAnimationArray(number) {
   let numbers = [number];
   for (let i = 0; i < number; i++) {
@@ -248,6 +252,7 @@ function handleCountButton() {
     const startDate = new Date(startValue),
       endDate = new Date(endValue);
     if (endDate.valueOf() >= startDate.valueOf()) {
+      makeOutputVisible(true);
       printOutputAnimation(WorkingHours.getWorkingHours(startDate, endDate));
     } else {
       printOutput("");
@@ -258,6 +263,7 @@ function handleCountButton() {
 function handleResetButton() {
   document.getElementById("first-date").value = "";
   document.getElementById("second-date").value = "";
-  document.getElementById("output").innerHTML = "";
+  document.getElementById("output").innerHTML = "0";
   makeResetVisible(false);
+  makeOutputVisible(false);
 }
